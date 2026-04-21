@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Dropout Meter</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/dropout.css">
+</head>
+<body class="student-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🎓</div>
+    EduPortal
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Student</span>
+    <a href="home.html"    class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="credits.html" class="nav-lnk"><i class='bx bxs-graduation'></i> Credit Checker</a>
+    <a href="marks.html"   class="nav-lnk"><i class='bx bxs-bar-chart-alt-2'></i> Marks Details</a>
+    <a href="dropout.html" class="nav-lnk active"><i class='bx bxs-error-circle'></i> Dropout Meter</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <a href="home.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Dashboard</a>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-icon icon-dropout">📉</div>
+      <div class="page-title">Dropout Meter</div>
+    </div>
+    <div class="page-sub">Your risk analysis based on attendance, marks, assignments and CGPA trend</div>
+  </div>
+
+  <div class="grid2 anim-up" style="align-items:stretch;">
+
+    <!-- Gauge Card -->
+    <div class="risk-meter-card" style="margin-bottom:0;height:100%;box-sizing:border-box;">
+      <div class="ccard-title" style="margin-bottom:4px">Risk Score 🎯</div>
+      <div style="font-size:13px;font-weight:600;color:#888;margin-bottom:16px">Calculated from multiple academic factors</div>
+
+      <div class="gauge-section">
+        <svg width="220" height="120" viewBox="0 0 220 120">
+          <path d="M 20 108 A 90 90 0 0 1 200 108" fill="none" stroke="#e8ddd0" stroke-width="16" stroke-linecap="round"/>
+          <path id="gaugeArc" d="M 20 108 A 90 90 0 0 1 200 108"
+            fill="none" stroke="url(#gg)" stroke-width="16" stroke-linecap="round"
+            style="stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset 1.3s ease"
+            data-pct="22"/>
+          <defs>
+            <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#7ECAC8"/>
+              <stop offset="50%"  stop-color="#F5D547"/>
+              <stop offset="100%" stop-color="#E8856A"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="gauge-num" id="gauge-num" style="color:var(--teal)">—</div>
+        <div class="gauge-desc" id="gauge-desc" style="color:#27ae60">Loading...</div>
+      </div>
+
+      <!-- Risk level legend -->
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:16px">
+        <span class="pill pill-teal" style="font-size:11px">0–35% Low</span>
+        <span class="pill pill-yellow" style="font-size:11px">36–65% Medium</span>
+        <span class="pill pill-coral" style="font-size:11px">66–100% High</span>
+      </div>
+    </div>
+
+    <!-- Factors -->
+    <div class="ccard" style="height:100%;box-sizing:border-box;">
+      <div class="ccard-title">Risk Factors 🔍</div>
+      <div class="ccard-sub">Individual factors contributing to your score</div>
+
+      <div class="rf-row"><div class="rf-left"><i class='bx bxs-calendar-check'></i> Attendance</div><span id="rf-att" class="rf-ok">—</span></div>
+      <div class="rf-row"><div class="rf-left"><i class='bx bxs-bar-chart-alt-2'></i> Average Marks</div><span id="rf-marks" class="rf-ok">—</span></div>
+
+      <div class="rf-row"><div class="rf-left"><i class='bx bxs-flag'></i> Active Backlogs</div><span id="rf-kt" class="rf-ok">—</span></div>
+      <div class="rf-row"><div class="rf-left"><i class='bx bxs-award'></i> CGPA Trend</div><span id="rf-sgpi" class="rf-ok">—</span></div>
+
+    </div>
+  </div>
+
+  <!-- Tips Section -->
+  <div style="margin-bottom:14px">
+    <div style="font-family:var(--font-display);font-size:22px;margin-bottom:4px">How to Improve 💡</div>
+    <div style="font-size:13px;font-weight:600;color:#777">Personalised tips based on your current scores</div>
+  </div>
+
+  <div class="tips-grid anim-up" style="animation-delay:0.15s" id="tips-grid">
+  </div>
+
+</main>
+
+<script src="../JS/api.js"></script>
+<script src="../JS/dropout.js"></script>
+</body>
+</html>

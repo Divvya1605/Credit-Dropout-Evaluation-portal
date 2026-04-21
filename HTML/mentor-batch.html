@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Student Batch</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/mentor-home.css">
+</head>
+<body class="mentor-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🧑‍🏫</div>
+    EduPortal
+  </div>
+  <div class="mentor-strip"><i class='bx bxs-user-badge'></i> Mentor — CSE-C</div>
+
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Mentor</span>
+    <a href="mentor-home.html" class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="mentor-batch.html" class="nav-lnk active"><i class='bx bxs-group'></i> Student Batch</a>
+    <a href="mentor-atrisk.html" class="nav-lnk"><i class='bx bxs-error-circle'></i> At-Risk Students</a>
+    <a href="mentor-attendance.html" class="nav-lnk"><i class='bx bxs-calendar-check'></i> Attendance</a>
+  </div>
+
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+<a href="mentor-home.html" class="back-btn">
+<i class='bx bx-arrow-back'></i> Back to Dashboard
+</a>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-icon" style="background:var(--teal)">👥</div>
+    <div class="page-title">Student Batch — CSE-C</div>
+  </div>
+  <div class="page-sub">Full batch list with live search and risk filtering</div>
+</div>
+
+<!-- BATCH SUMMARY -->
+<div class="m-quick-stats anim-up" style="margin-bottom:24px">
+  <div class="mqs">
+    <div class="mqs-icon" style="background:var(--teal)">👥</div>
+    <div>
+      <div class="mqs-val" id="totalCount">0</div>
+      <div class="mqs-lbl">Students Shown</div>
+    </div>
+  </div>
+
+  <div class="mqs">
+    <div class="mqs-icon" style="background:var(--green)">✓</div>
+    <div>
+      <div class="mqs-val" id="lowCount">0</div>
+      <div class="mqs-lbl">Low Risk</div>
+    </div>
+  </div>
+
+  <div class="mqs">
+    <div class="mqs-icon" style="background:var(--yellow)">~</div>
+    <div>
+      <div class="mqs-val" id="medCount">0</div>
+      <div class="mqs-lbl">Medium Risk</div>
+    </div>
+  </div>
+
+  <div class="mqs">
+    <div class="mqs-icon" style="background:var(--coral)">⚠</div>
+    <div>
+      <div class="mqs-val" id="highCount">0</div>
+      <div class="mqs-lbl">High Risk</div>
+    </div>
+  </div>
+</div>
+<!-- TABLE -->
+<div class="ccard anim-up" style="animation-delay:0.1s">
+<div class="toolbar" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center">
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<select id="divFilter" style="padding:8px 10px;border:3px solid #1A1A1A;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px">
+<option value="">Division</option>
+</select>
+<select id="batchFilter" style="padding:8px 10px;border:3px solid #1A1A1A;border-radius:10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px">
+<option value="">Batch</option>
+</select>
+</div>
+<div class="search-wrap">
+<i class='bx bx-search' style="font-size:18px;color:#bbb"></i>
+<input type="text" id="searchInp" placeholder="Search by name or roll number...">
+</div>
+</div>
+<div class="filter-tabs">
+<button class="ft on" data-risk="all">All Students</button>
+<button class="ft" data-risk="low">✓ Low Risk</button>
+<button class="ft" data-risk="medium">~ Medium Risk</button>
+<button class="ft" data-risk="high">⚠ High Risk</button>
+</div>
+<table class="tbl">
+<thead>
+<tr>
+<th>Student</th>
+<th>Roll No.</th>
+<th>Division</th>
+<th>Batch</th>
+<th>Avg Marks</th>
+<th>CGPA</th>
+<th>Risk Level</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="stuBody"></tbody>
+</table>
+</div>
+</main>
+<div id="toast"></div>
+<script src="../JS/api.js"></script>
+<script src="../JS/mentor-batch.js"></script>
+</body>
+</html>

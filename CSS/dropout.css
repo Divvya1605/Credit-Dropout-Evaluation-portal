@@ -1,0 +1,32 @@
+/* DROPOUT METER PAGE */
+.student-page .nav-lnk.active { background: var(--yellow); color: var(--black); border-color: var(--black); box-shadow: 3px 3px 0 var(--black); }
+.student-page .sb-logo-box { background: var(--yellow); }
+.student-page .u-ava       { background: var(--yellow); }
+
+.page-icon.icon-dropout { background: var(--coral); }
+
+.gauge-section { display: flex; flex-direction: column; align-items: center; padding: 28px 0 20px; }
+.gauge-num  { font-family: var(--font-display); font-size: 52px; line-height: 1; margin-top: -8px; }
+.gauge-desc { font-size: 15px; font-weight: 800; margin-top: 6px; }
+
+.risk-meter-card { background: var(--white); border: 3px solid var(--black); border-radius: 22px; padding: 30px; box-shadow: 5px 5px 0 var(--black); text-align: center; margin-bottom: 22px; }
+
+.rf-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #f5f0e8; border: 2px solid #ddd; border-radius: 12px; margin-bottom: 10px; font-size: 14px; font-weight: 700; }
+.rf-left { display: flex; align-items: center; gap: 10px; color: #555; }
+.rf-ok   { color: #27ae60; font-weight: 800; }
+.rf-warn { color: #e67e22; font-weight: 800; }
+.rf-bad  { color: #e74c3c; font-weight: 800; }
+
+/* Tips section */
+.tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.tip-card { background: var(--white); border: 3px solid var(--black); border-radius: 16px; padding: 18px; box-shadow: 4px 4px 0 var(--black); }
+.tip-card:nth-child(1) { border-top: 5px solid var(--teal); }
+.tip-card:nth-child(2) { border-top: 5px solid var(--yellow); }
+.tip-card:nth-child(3) { border-top: 5px solid var(--pink); }
+.tip-card:nth-child(4) { border-top: 5px solid var(--coral); }
+.tip-title { font-family: var(--font-display); font-size: 16px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+.tip-text  { font-size: 13px; font-weight: 600; color: #555; line-height: 1.6; }
+/* Equal height cards */
+.grid2 { align-items: stretch; }
+.risk-meter-card { margin-bottom: 0; display: flex; flex-direction: column; }
+.gauge-section { flex: 1; }

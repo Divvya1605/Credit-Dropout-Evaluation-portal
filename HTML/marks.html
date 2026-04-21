@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Marks Details</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/marks.css">
+</head>
+<body class="student-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🎓</div>
+    EduPortal
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Student</span>
+    <a href="home.html"    class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="credits.html" class="nav-lnk"><i class='bx bxs-graduation'></i> Credit Checker</a>
+    <a href="marks.html"   class="nav-lnk active"><i class='bx bxs-bar-chart-alt-2'></i> Marks Details</a>
+    <a href="dropout.html" class="nav-lnk"><i class='bx bxs-error-circle'></i> Dropout Meter</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <a href="home.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Dashboard</a>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-icon icon-marks">📊</div>
+      <div class="page-title">Marks Details</div>
+    </div>
+    <div class="page-sub">Subject-wise performance for Semester 4 — 2024–25</div>
+  </div>
+
+
+  <!-- Semester Selector -->
+  <div id="sem-tabs" style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+    <!-- filled by JS -->
+  </div>
+  <style>
+    .sem-tab{font-family:'Fredoka One',cursive;font-size:15px;padding:10px 24px;border:3px solid #1A1A1A;border-radius:12px;background:#fff;cursor:pointer;box-shadow:3px 3px 0 #1A1A1A;transition:all 0.15s}
+    .sem-tab.on{background:#F5D547;box-shadow:3px 3px 0 #1A1A1A}
+    .sem-tab:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #1A1A1A}
+  </style>
+
+  <!-- Summary row -->
+  <div class="marks-summary anim-up">
+    <div class="ms-card">
+      <div class="ms-val" id="ms-avg" style="color:var(--teal)">—</div>
+      <div class="ms-lbl">Overall Average</div>
+    </div>
+    <div class="ms-card">
+      <div class="ms-val" id="ms-sgpi" style="color:var(--yellow)">—</div>
+      <div class="ms-lbl">Current CGPA</div>
+    </div>
+    <div class="ms-card">
+      <div class="ms-val" id="ms-kt" style="color:var(--coral)">—</div>
+      <div class="ms-lbl">Subjects Below 60%</div>
+    </div>
+    <div class="ms-card">
+      <div class="ms-val" id="ms-good" style="color:var(--purple)">—</div>
+      <div class="ms-lbl">A Grades</div>
+    </div>
+  </div>
+
+  <!-- Marks Table -->
+  <div class="ccard anim-up" style="animation-delay:0.1s;margin-bottom:22px">
+    <div class="ccard-title" id="marksTitle">Semester 1 — Mark Sheet 📋</div>
+    <div class="ccard-sub">Internal Assessment (IA) out of 50 · Semester End Exam (SEE) out of 100</div>
+    <table class="tbl">
+      <thead>
+        <tr><th>Subject</th><th>Type</th><th>ESE</th><th>ISE</th><th>MSE/Practical</th><th>Total</th><th>%</th><th>Grade</th><th>Status</th></tr>
+      </thead>
+      <tbody id="marks-tbody"><tr><td colspan="9" style="text-align:center;padding:24px;color:#aaa;font-weight:700">Loading...</td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- Subject-wise visual breakdown -->
+  <div class="ccard anim-up" style="animation-delay:0.2s">
+    <div class="ccard-title">Visual Breakdown 📈</div>
+    <div class="ccard-sub">IA vs SEE performance per subject</div>
+
+    <div id="marks-breakdown"><p style="text-align:center;padding:24px;color:#aaa;font-weight:700">Loading...</p></div>
+
+  </div>
+
+</main>
+
+<script src="../JS/api.js"></script>
+<script src="../JS/marks.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* MARKS DETAILS PAGE */
+.student-page .nav-lnk.active { background: var(--yellow); color: var(--black); border-color: var(--black); box-shadow: 3px 3px 0 var(--black); }
+.student-page .sb-logo-box { background: var(--yellow); }
+.student-page .u-ava       { background: var(--yellow); }
+
+.page-icon.icon-marks { background: var(--yellow); }
+
+/* Grade chips */
+.grade { padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 800; border: 2px solid var(--black); font-family: var(--font-display); }
+.g-a { background: var(--teal); }
+.g-b { background: var(--yellow); }
+.g-c { background: var(--peach, #F5C98A); }
+.g-d { background: var(--coral); }
+
+/* Summary bar cards */
+.marks-summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 26px; }
+.ms-card { background: var(--white); border: 3px solid var(--black); border-radius: 18px; padding: 18px 20px; box-shadow: 4px 4px 0 var(--black); text-align: center; }
+.ms-val  { font-family: var(--font-display); font-size: 28px; line-height: 1; margin-bottom: 4px; }
+.ms-lbl  { font-size: 12px; font-weight: 700; color: #777; }
+
+/* Per-subject bar list */
+.subj-detail { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 2px dashed #e8ddd0; }
+.subj-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.sd-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sd-name  { font-family: var(--font-display); font-size: 17px; }
+.sd-score { font-family: var(--font-display); font-size: 17px; }
+.sd-bars  { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sd-bar-lbl { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 4px; }
+.pbar-bg   { height: 10px; background: #e8e0d0; border-radius: 100px; border: 2px solid var(--black); overflow: hidden; }
+.pbar-fill { height: 100%; border-radius: 100px; transition: width 0.9s cubic-bezier(.34,1.56,.64,1); }/* MARKS DETAILS PAGE */
+.student-page .nav-lnk.active { background: var(--yellow); color: var(--black); border-color: var(--black); box-shadow: 3px 3px 0 var(--black); }
+.student-page .sb-logo-box { background: var(--yellow); }
+.student-page .u-ava       { background: var(--yellow); }
+
+.page-icon.icon-marks { background: var(--yellow); }
+
+/* Grade chips */
+.grade { padding: 4px 14px; border-radius: 100px; font-size: 12px; font-weight: 800; border: 2px solid var(--black); font-family: var(--font-display); }
+.g-a { background: var(--teal); }
+.g-b { background: var(--yellow); }
+.g-c { background: var(--peach, #F5C98A); }
+.g-d { background: var(--coral); }
+
+/* Summary bar cards */
+.marks-summary { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 26px; }
+.ms-card { background: var(--white); border: 3px solid var(--black); border-radius: 18px; padding: 18px 20px; box-shadow: 4px 4px 0 var(--black); text-align: center; }
+.ms-val  { font-family: var(--font-display); font-size: 28px; line-height: 1; margin-bottom: 4px; }
+.ms-lbl  { font-size: 12px; font-weight: 700; color: #777; }
+
+/* Per-subject bar list */
+.subj-detail { margin-bottom: 14px; padding-bottom: 14px; border-bottom: 2px dashed #e8ddd0; }
+.subj-detail:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.sd-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sd-name  { font-family: var(--font-display); font-size: 17px; }
+.sd-score { font-family: var(--font-display); font-size: 17px; }
+.sd-bars  { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sd-bar-lbl { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 4px; }
+.pbar-bg   { height: 10px; background: #e8e0d0; border-radius: 100px; border: 2px solid var(--black); overflow: hidden; }
+.pbar-fill { height: 100%; border-radius: 100px; transition: width 0.9s cubic-bezier(.34,1.56,.64,1); }

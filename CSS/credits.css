@@ -1,0 +1,119 @@
+/* ===== CREDIT CHECKER PAGE ===== */
+
+.student-page .nav-lnk.active { background: var(--yellow); color: var(--black); border-color: var(--black); box-shadow: 3px 3px 0 var(--black); }
+.student-page .sb-logo-box { background: var(--yellow); }
+.student-page .u-ava       { background: var(--yellow); }
+
+.page-icon.icon-credits { background: var(--pink); }
+
+/* ── CREDIT RING ── */
+.ring-wrap       { position: relative; flex-shrink: 0; }
+.ring-wrap svg   { transform: rotate(-90deg); display: block; }
+.ring-center     { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ring-pct        { font-family: var(--font-display); font-size: 28px; line-height: 1; }
+.ring-lbl        { font-size: 11px; font-weight: 700; color: #888; }
+.credit-section  { display: flex; align-items: center; gap: 26px; margin-bottom: 20px; }
+.credit-rows     { flex: 1; }
+.cr-row          { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px dashed #e8ddd0; font-size: 14px; }
+.cr-row:last-child { border-bottom: none; }
+.cr-lbl          { font-weight: 600; color: #666; }
+.cr-val          { font-family: var(--font-display); font-size: 20px; }
+.subj-bar        { margin-bottom: 14px; }
+.subj-top        { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 7px; }
+
+/* ── ESE CONVERTER ── */
+.converter-grid   { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.conv-inp         { width: 100%; background: #f5f0e8; border: 3px solid var(--black); border-radius: 12px; padding: 11px 14px; font-family: var(--font-body); font-size: 14px; font-weight: 700; color: var(--black); outline: none; transition: box-shadow 0.2s; }
+.conv-inp:focus   { box-shadow: 3px 3px 0 var(--pink); }
+.conv-inp::placeholder { color: #bbb; }
+.conv-lbl         { display: block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 6px; color: #555; }
+.conv-result      { display: none; align-items: center; justify-content: space-between; background: var(--pink); border: 3px solid var(--black); border-radius: 14px; padding: 14px 20px; margin-top: 14px; box-shadow: 3px 3px 0 var(--black); }
+.conv-result-lbl  { font-size: 13px; font-weight: 800; }
+.conv-result-val  { font-family: var(--font-display); font-size: 30px; }
+.conv-stored      { display: none; align-items: center; gap: 8px; background: #f5f0e8; border: 2px solid #ddd; border-radius: 10px; padding: 9px 14px; margin-top: 8px; font-size: 13px; font-weight: 700; color: #666; }
+.conv-stored span { font-family: var(--font-display); font-size: 16px; color: var(--black); }
+
+/* ── SUBJECT TABLE ── */
+.subj-table-wrap     { overflow-x: auto; margin-top: 4px; border-radius: 14px; border: 3px solid var(--black); }
+.subj-table          { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 860px; }
+.subj-table th       { background: var(--black); color: var(--white); padding: 12px 10px; text-align: center; font-family: var(--font-display); font-size: 13px; white-space: nowrap; }
+.subj-table th:first-child { text-align: left; padding-left: 14px; }
+.subj-table td       { padding: 9px 8px; border-bottom: 2px solid #ede5d8; text-align: center; vertical-align: middle; background: var(--white); }
+.subj-table td:first-child { text-align: left; padding-left: 12px; }
+.subj-table tr:last-child td { border-bottom: none; }
+.subj-table tr:hover td { background: rgba(245,213,71,0.12); }
+
+/* KT row */
+.subj-table tr.kt-row td { background: #fff0f0 !important; }
+
+/* Type badge in first column */
+.type-badge    { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; border: 2px solid var(--black); white-space: nowrap; }
+.type-theory   { background: var(--yellow); }
+.type-practical{ background: var(--teal); }
+
+/* Table number inputs */
+.t-inp         { width: 68px; background: #f5f0e8; border: 2px solid #ccc; border-radius: 8px; padding: 7px 6px; font-family: var(--font-body); font-size: 13px; font-weight: 700; color: var(--black); outline: none; text-align: center; transition: border-color 0.15s, box-shadow 0.15s; }
+.t-inp:focus   { border-color: var(--black); box-shadow: 2px 2px 0 var(--yellow); }
+.t-inp:disabled{ background: #eee; color: #bbb; border-color: #ddd; cursor: not-allowed; }
+.t-inp::placeholder { color: #ccc; }
+
+/* ESE obt cell — input + use button side by side */
+.ese-obt-cell  { display: flex; align-items: center; gap: 5px; padding: 8px 6px !important; }
+
+/* Use button */
+.use-btn       { flex-shrink: 0; padding: 6px 10px; background: var(--pink); border: 2px solid var(--black); border-radius: 8px; font-family: var(--font-body); font-size: 11px; font-weight: 800; cursor: pointer; white-space: nowrap; box-shadow: 2px 2px 0 var(--black); transition: transform 0.12s, box-shadow 0.12s; }
+.use-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--black); }
+.use-btn:active{ transform: translate(1px,1px); box-shadow: none; }
+
+/* Grade colours */
+.grade-cell    { font-family: var(--font-display); font-size: 14px; white-space: nowrap; }
+.grade-o       { color: #16a085; }
+.grade-ap      { color: #27ae60; }
+.grade-a       { color: #2980b9; }
+.grade-bp      { color: #8e44ad; }
+.grade-b       { color: #d4a017; }
+.grade-c       { color: #e67e22; }
+.grade-p       { color: #7f8c8d; }
+.grade-f       { color: #e74c3c; font-weight: 900; }
+
+/* C×G cell */
+.cxg           { font-family: var(--font-display); font-size: 14px; }
+
+/* Status cell */
+.status-pass   { color: #27ae60; font-size: 12px; font-weight: 800; }
+.status-kt     { color: #e74c3c; font-size: 12px; font-weight: 800; }
+
+/* Delete button */
+.del-btn       { background: none; border: none; cursor: pointer; color: #ccc; font-size: 17px; padding: 4px 6px; transition: color 0.15s; }
+.del-btn:hover { color: var(--coral); }
+
+/* Add row buttons */
+.add-row-btns  { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+
+/* ── SGPI RESULT CARD ── */
+.sgpi-card     { background: var(--yellow); border: 4px solid var(--black); border-radius: 22px; padding: 24px 28px; box-shadow: 6px 6px 0 var(--black); display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 22px; transition: background 0.3s; }
+.sgpi-card.kt-mode { background: #ffe0e0; }
+.sgpi-item     { text-align: center; padding: 0 16px; border-right: 3px dashed rgba(0,0,0,0.15); }
+.sgpi-item:last-child { border-right: none; }
+.sgpi-val      { font-family: var(--font-display); font-size: 42px; line-height: 1; }
+.sgpi-lbl      { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #555; margin-top: 4px; }
+
+/* KT warning notice */
+.kt-notice     { display: none; align-items: center; gap: 10px; background: #ffe0e0; border: 3px solid var(--coral); border-radius: 12px; padding: 12px 16px; margin-top: 14px; font-size: 13px; font-weight: 800; color: #c0392b; }
+.kt-notice.show{ display: flex; }
+
+/* ── HOW IT WORKS INFO BOX ── */
+.how-box       { background: #f5f0e8; border: 2px solid #ddd; border-radius: 14px; padding: 16px 18px; margin-top: 18px; }
+.how-box-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em; color: #999; margin-bottom: 10px; }
+.how-step      { display: flex; gap: 10px; font-size: 13px; font-weight: 600; color: #555; margin-bottom: 8px; line-height: 1.5; }
+.how-step:last-child { margin-bottom: 0; }
+.how-num       { width: 22px; height: 22px; background: var(--black); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── GRADE REFERENCE TABLE ── */
+.hist-table    { width: 100%; border-collapse: collapse; font-size: 14px; }
+.hist-table th { background: var(--black); color: var(--white); padding: 12px 14px; text-align: left; font-family: var(--font-display); font-size: 14px; }
+.hist-table th:first-child { border-radius: 12px 0 0 0; }
+.hist-table th:last-child  { border-radius: 0 12px 0 0; }
+.hist-table td { padding: 12px 14px; border-bottom: 2px solid #ede5d8; font-weight: 600; }
+.hist-table tr:hover td    { background: rgba(245,213,71,0.15); }
+.hist-table tr:last-child td { border-bottom: none; }

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Credit Checker & SGPI</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/credits.css">
+</head>
+<body class="student-page">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🎓</div>
+    EduPortal
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Student</span>
+    <a href="home.html"    class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="credits.html" class="nav-lnk active"><i class='bx bxs-graduation'></i> Credit Checker</a>
+    <a href="marks.html"   class="nav-lnk"><i class='bx bxs-bar-chart-alt-2'></i> Marks Details</a>
+    <a href="dropout.html" class="nav-lnk"><i class='bx bxs-error-circle'></i> Dropout Meter</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()">
+        <i class='bx bx-log-out'></i>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  
+  <!-- Credit Semester Filter -->
+  <div id="credit-sem-tabs" style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+    <button class="csem-tab on" data-sem="all">All Semesters</button>
+    <button class="csem-tab" data-sem="1">Semester 1</button>
+    <button class="csem-tab" data-sem="2">Semester 2</button>
+    <button class="csem-tab" data-sem="3">Semester 3</button>
+  </div>
+  <style>
+    .csem-tab{font-family:'Fredoka One',cursive;font-size:15px;padding:10px 22px;border:3px solid #1A1A1A;border-radius:12px;background:#fff;cursor:pointer;box-shadow:3px 3px 0 #1A1A1A;transition:all 0.15s}
+    .csem-tab.on{background:var(--teal);box-shadow:3px 3px 0 #1A1A1A}
+    .csem-tab:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #1A1A1A}
+  </style>
+
+  <a href="home.html" class="back-btn">
+    <i class='bx bx-arrow-back'></i> Back to Dashboard
+  </a>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-icon icon-credits">🎓</div>
+      <div class="page-title">Credit Checker & SGPI</div>
+    </div>
+    <div class="page-sub">Add your subjects, enter marks — grades, credit points and SGPI calculate automatically</div>
+  </div>
+
+  <!-- ══ ROW 1: Program Progress + ESE Converter ══ -->
+  <div class="grid2 anim-up">
+
+    <!-- Credit Progress Ring -->
+    <div class="ccard">
+      <div class="ccard-title">Program Credit Progress 🎯</div>
+      <div class="ccard-sub">Total credits earned vs required for the full program</div>
+
+      <div class="credit-section">
+        <!-- Ring SVG -->
+        <div class="ring-wrap">
+          <svg width="130" height="130" viewBox="0 0 130 130">
+            <circle cx="65" cy="65" r="50"
+              fill="none" stroke="#e8ddd0" stroke-width="12"/>
+            <circle id="ringCircle" cx="65" cy="65" r="50"
+              fill="none" stroke="url(#rg)" stroke-width="12" stroke-linecap="round"
+              style="stroke-dasharray:314;stroke-dashoffset:314;transition:stroke-dashoffset 1.2s cubic-bezier(.34,1.56,.64,1)"/>
+            <defs>
+              <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%"   stop-color="#F5D547"/>
+                <stop offset="100%" stop-color="#7ECAC8"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="ring-center">
+            <div class="ring-pct" id="ringPct">--%</div>
+            <div class="ring-lbl">Complete</div>
+          </div>
+        </div>
+
+        <!-- Stats rows -->
+        <div class="credit-rows">
+          <div class="cr-row">
+            <span class="cr-lbl">Total Required</span>
+            <span class="cr-val" id="reqCredits">--</span>
+          </div>
+          <div class="cr-row">
+            <span class="cr-lbl">Completed</span>
+            <span class="cr-val" id="earnedCredits" style="color:var(--teal)">--</span>
+          </div>
+          <div class="cr-row">
+            <span class="cr-lbl">Remaining</span>
+            <span class="cr-val" id="remainingCredits" style="color:var(--coral)">--</span>
+          </div>
+          <div class="cr-row">
+            <span class="cr-lbl" id="sgpiLabel">Semester SGPI</span>
+            <!-- id="liveSGPI" updates live from calculateSGPI() -->
+            <span class="cr-val" id="liveSGPI" style="color:var(--yellow)">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category progress bars -->
+      <div class="subj-bar">
+        <div class="subj-top"><span style="color:#777">Core Theory</span><span>58 cr</span></div>
+        <div class="pbar-bg"><div class="pbar-fill" data-w="72%" style="background:var(--yellow);width:0"></div></div>
+      </div>
+      <div class="subj-bar">
+        <div class="subj-top"><span style="color:#777">Lab / Practical</span><span>42 cr</span></div>
+        <div class="pbar-bg"><div class="pbar-fill" data-w="87%" style="background:var(--teal);width:0"></div></div>
+      </div>
+      <div class="subj-bar">
+        <div class="subj-top"><span style="color:#777">Electives</span><span>24 cr</span></div>
+        <div class="pbar-bg"><div class="pbar-fill" data-w="55%" style="background:var(--pink);width:0"></div></div>
+      </div>
+      <div class="subj-bar">
+        <div class="subj-top"><span style="color:#777">Project / Internship</span><span>18 cr</span></div>
+        <div class="pbar-bg"><div class="pbar-fill" data-w="45%" style="background:var(--coral);width:0"></div></div>
+      </div>
+    </div>
+
+    <!-- ESE Mark Converter -->
+    <div class="ccard">
+      <div class="ccard-title">ESE Mark Converter 🔄</div>
+      <div class="ccard-sub">
+        Convert ESE marks from one scale to another before entering below<br>
+        <span style="font-size:12px;color:#aaa;font-weight:700">
+          Formula: (Marks Obtained ÷ Original Max) × Convert To
+        </span>
+      </div>
+
+      <div class="converter-grid">
+        <div>
+          <label class="conv-lbl">Original Max</label>
+          <!-- id used by convertMarks() -->
+          <input class="conv-inp" type="number" id="originalMax" placeholder="e.g. 100" min="0">
+        </div>
+        <div>
+          <label class="conv-lbl">Marks Obtained</label>
+          <!-- id used by convertMarks() -->
+          <input class="conv-inp" type="number" id="originalObt" placeholder="e.g. 72" min="0">
+        </div>
+        <div>
+          <label class="conv-lbl">Convert To</label>
+          <!-- id used by convertMarks() -->
+          <input class="conv-inp" type="number" id="convertTo" placeholder="e.g. 60" min="0">
+        </div>
+      </div>
+
+      <button class="btn btn-pink" style="width:100%;justify-content:center;font-family:'Fredoka One',cursive;font-size:16px" onclick="convertMarks()">
+        Convert ESE Marks 🔄
+      </button>
+
+      <!-- Result — id="convResultBox" toggled visible by convertMarks() -->
+      <div class="conv-result" id="convResultBox">
+        <div class="conv-result-lbl">Converted ESE Marks →</div>
+        <!-- id="convertedResult" written by convertMarks() -->
+        <div class="conv-result-val" id="convertedResult">—</div>
+      </div>
+
+      <!-- Stored badge — id="storedBadge" toggled visible -->
+      <div class="conv-stored" id="storedBadge">
+        <i class='bx bxs-save' style="font-size:16px;color:var(--coral)"></i>
+        Stored for "Use ↓" button:&nbsp;<span id="storedDisplay">—</span>
+      </div>
+
+      <!-- How to use -->
+      <div class="how-box">
+        <div class="how-box-title">How to use</div>
+        <div class="how-step">
+          <div class="how-num">1</div>
+          Enter original max, marks obtained, and the scale to convert to above.
+        </div>
+        <div class="how-step">
+          <div class="how-num">2</div>
+          Click <b>Add Theory / Add Practical</b> below to create a subject row.
+        </div>
+        <div class="how-step">
+          <div class="how-num">3</div>
+          In the <b>ESE Obt</b> column, click <b>Use ↓</b> to paste the converted value.
+        </div>
+        <div class="how-step">
+          <div class="how-num">4</div>
+          Fill all remaining marks — Grade and SGPI calculate automatically.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end grid2 -->
+
+  <!-- ══ SGPI CALCULATOR TABLE ══ -->
+  <div class="ccard anim-up" style="animation-delay:0.1s">
+
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px">
+      <div>
+        <div class="ccard-title">SGPI Calculator 📐</div>
+        <div class="ccard-sub">
+          Theory: ESE + ISE + MSE · Practical: ESE + MSE only ·
+          KT if ESE &lt; 40% or Internal &lt; 40%
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="background:#fff0f0;border:2px solid var(--coral);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#c0392b">
+          ⚠ KT = red row, SGPI blocked
+        </span>
+        <span style="background:rgba(245,213,71,0.3);border:2px solid #ccc;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:800;color:#555">
+          ESE 60 → ISE/MSE auto = 20 · ESE 45 → ISE/MSE auto = 15
+        </span>
+      </div>
+    </div>
+
+    <div class="subj-table-wrap">
+      <table class="subj-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Credits</th>
+            <th>ESE Max</th>
+            <th>ESE Obt</th>
+            <th>ISE Max</th>
+            <th>ISE Obt</th>
+            <th>MSE Max</th>
+            <th>MSE Obt</th>
+            <th>Grade (GP)</th>
+            <th>C × GP</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <!-- rows injected by createRow() -->
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Add row buttons -->
+    <div class="add-row-btns">
+      <button class="btn btn-yellow" style="font-size:14px;padding:10px 22px" onclick="addTheory()">
+        <i class='bx bx-plus'></i> Add Theory Subject
+      </button>
+      <button class="btn btn-teal" style="font-size:14px;padding:10px 22px" onclick="addPractical()">
+        <i class='bx bx-plus'></i> Add Practical Subject
+      </button>
+    </div>
+
+    <!-- KT warning — id="ktNotice" toggled by calculateSGPI() -->
+    <div class="kt-notice" id="ktNotice">
+      <i class='bx bxs-error-circle' style="font-size:20px"></i>
+      KT detected in one or more subjects — SGPI cannot be calculated until all KTs are cleared.
+    </div>
+
+    <!-- SGPI Result Card -->
+    <!-- id="sgpiCard" gets class "kt-mode" when KT exists -->
+    <div class="sgpi-card" id="sgpiCard">
+      <div class="sgpi-item">
+        <!-- id="sgpi" written by calculateSGPI() -->
+        <div class="sgpi-val" id="sgpi">--</div>
+        <div class="sgpi-lbl">SGPI</div>
+      </div>
+      <div class="sgpi-item">
+        <!-- id="totalCredits" written by calculateSGPI() -->
+        <div class="sgpi-val" id="totalCredits">0</div>
+        <div class="sgpi-lbl">Total Credits</div>
+      </div>
+      <div class="sgpi-item">
+        <!-- id="totalCP" written by calculateSGPI() -->
+        <div class="sgpi-val" id="totalCP">0</div>
+        <div class="sgpi-lbl">Credit Points</div>
+      </div>
+    </div>
+
+  </div><!-- end SGPI Calculator card -->
+
+  <!-- ══ GRADE REFERENCE ══ -->
+  <div class="ccard anim-up" style="animation-delay:0.15s">
+    <div class="ccard-title">Grade Reference 📊</div>
+    <div class="ccard-sub">SIESGST grading scale — used for all SGPI calculations</div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Grade</th><th>Grade Point (GP)</th><th>% Range</th><th>Remark</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-o">O</span></td>
+          <td><b>10</b></td><td>≥ 80%</td>
+          <td><span class="pill pill-teal">Outstanding</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-ap">A+</span></td>
+          <td><b>9</b></td><td>75% – 79%</td>
+          <td><span class="pill pill-teal">Excellent</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-a">A</span></td>
+          <td><b>8</b></td><td>70% – 74%</td>
+          <td><span class="pill pill-yellow">Very Good</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-bp">B+</span></td>
+          <td><b>7</b></td><td>60% – 69%</td>
+          <td><span class="pill pill-yellow">Good</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-b">B</span></td>
+          <td><b>6</b></td><td>50% – 59%</td>
+          <td><span class="pill pill-pink">Average</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-c">C</span></td>
+          <td><b>5</b></td><td>45% – 49%</td>
+          <td><span class="pill pill-pink">Satisfactory</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-p">P</span></td>
+          <td><b>4</b></td><td>40% – 44%</td>
+          <td><span class="pill pill-purple">Pass</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-family:'Fredoka One',cursive;font-size:18px" class="grade-f">F</span></td>
+          <td><b>0</b></td><td>&lt; 40%</td>
+          <td><span class="pill pill-coral">Fail / KT</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ SEMESTER HISTORY ══ -->
+  <div class="ccard anim-up" style="animation-delay:0.2s">
+    <div class="ccard-title">Semester History 📅</div>
+    <div class="ccard-sub">Your SGPI record across all semesters</div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Semester</th><th>Credits</th><th>SGPI</th><th>Status</th></tr>
+      </thead>
+      <tbody id="semHistoryBody">
+        <tr><td colspan="4" style="padding:14px;color:#aaa;font-weight:700">Loading semester history...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="../JS/api.js"></script>
+<script src="../JS/credits.js"></script>
+</body>
+</html>

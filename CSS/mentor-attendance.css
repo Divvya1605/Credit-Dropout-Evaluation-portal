@@ -1,0 +1,244 @@
+.main {
+  margin-left: 255px;
+  padding: 28px 36px;
+  width: calc(100% - 255px);
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;     
+}
+
+.page-title {
+  font-size: 36px;
+}
+
+.ccard-title {
+  font-size: 22px;
+}
+
+.stat-val {
+  font-size: 32px;
+}
+
+.stat-card {
+  padding: 22px 24px;
+}
+
+.bar-chart-wrap {
+  height: 260px;   /* was 220px */
+}
+
+/* --- Rings --- */
+.ring {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 12px;
+  color: #000;
+  position: relative;
+  background: conic-gradient(green 0%, #eee 0%);
+  transition: all 0.3s ease;
+}
+
+.ring span {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* --- Subject Container --- */
+.subject-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.subject-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.subject-box:hover {
+  transform: scale(1.05);
+}
+
+.subject-box.selected {
+  outline: 2px solid var(--yellow,#f1c40f);
+  border-radius: 6px;
+  padding: 4px;
+}
+
+/* --- Details Table --- */
+.details-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.details-box {
+  flex: 1 1 200px;
+  max-width: 250px;
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+.details-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-box th, .details-box td {
+  padding: 4px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.present { color: green; font-weight: 700; }
+.absent  { color: red; font-weight: 700; }
+
+/* --- Students Below 75% Table Rings --- */
+.att-student .ring {
+  width: 34px;
+  height: 34px;
+  font-size: 11px;
+}
+
+/* --- Toast Notification --- */
+#toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: #1A1A1A;
+  color: #fff;
+  padding: 13px 20px;
+  border-radius: 14px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 9999;
+  border: 3px solid #F5D547; /* yellow for alert */
+}
+
+/* --- Filter Bar --- */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* --- Student Overview Rings Layout --- */
+.tbl .ring {
+  margin: 0 auto;
+}
+.ring {
+  width: 38px;
+  height: 38px;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 12px;
+  color: #000;
+}
+
+.ring-inner {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.ring-fill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.ring span {
+  position: absolute;
+  z-index: 3;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: #f9f9f9;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.styled-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #fff url('data:image/svg+xml;utf8,<svg fill="gray" height="10" viewBox="0 0 24 24" width="10" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 12px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.styled-select:focus {
+  border-color: var(--teal,#1abc9c);
+  outline: none;
+  box-shadow: 0 0 4px var(--teal,#1abc9c);
+}
+
+.btn-load {
+  background: var(--teal,#1abc9c);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.btn-load:hover {
+  background: #5BABA8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#attAlertBody td:nth-child(4) {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

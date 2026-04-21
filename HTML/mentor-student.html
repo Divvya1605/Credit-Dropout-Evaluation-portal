@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Student Overview</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/mentor-home.css">
+</head>
+<body class="mentor-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🧑‍🏫</div>
+    EduPortal
+  </div>
+  <div class="mentor-strip"><i class='bx bxs-user-badge'></i> Mentor — CSE-C</div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Mentor</span>
+    <a href="mentor-home.html"       class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="mentor-batch.html"      class="nav-lnk active"><i class='bx bxs-group'></i> Student Batch</a>
+    <a href="mentor-atrisk.html"     class="nav-lnk"><i class='bx bxs-error-circle'></i> At-Risk Students</a>
+    <a href="mentor-attendance.html" class="nav-lnk"><i class='bx bxs-calendar-check'></i> Attendance</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <a href="mentor-batch.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Student Batch</a>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-icon" style="background:var(--teal)">🎓</div>
+      <div class="page-title" id="stuTitle">Student Overview</div>
+    </div>
+    <div class="page-sub" id="stuSub">Loading student details...</div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="m-quick-stats anim-up" style="margin-bottom:24px">
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--teal)">⭐</div>
+      <div><div class="mqs-val" id="q-cgpi">--</div><div class="mqs-lbl">Overall CGPI</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--yellow)">📚</div>
+      <div><div class="mqs-val" id="q-credits">--</div><div class="mqs-lbl">Total Earned Credits</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--coral)">⚠</div>
+      <div><div class="mqs-val" id="q-risk">--</div><div class="mqs-lbl">Risk Level</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--purple)">✏️</div>
+      <div><div class="mqs-val" id="q-kt">--</div><div class="mqs-lbl">KT Subjects</div></div>
+    </div>
+  </div>
+
+  <!-- SEMESTER SUMMARY -->
+  <div class="ccard anim-up" style="animation-delay:0.1s;margin-bottom:22px">
+    <div class="ccard-title">Semester-wise Credit & SGPI Summary</div>
+    <div class="ccard-sub">Credits and SGPI for each recorded semester</div>
+    <table class="hist-table">
+      <thead>
+        <tr><th>Semester</th><th>Credits</th><th>SGPI</th><th>Status</th></tr>
+      </thead>
+      <tbody id="semSummaryBody">
+        <tr><td colspan="4" style="padding:14px;color:#aaa;font-weight:700">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CURRENT SEMESTER SUBJECTS -->
+  <div class="ccard anim-up" style="animation-delay:0.15s">
+    <div class="ccard-title" id="semDetailTitle">Latest Semester — Subject Details</div>
+    <div class="ccard-sub">Subject-wise grades and credit points</div>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Type</th>
+          <th>Credits</th>
+          <th>Grade</th>
+          <th>Credit Points</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="semDetailBody">
+        <tr><td colspan="6" style="padding:14px;color:#aaa;font-weight:700">Loading...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<div id="toast"></div>
+<script src="../JS/api.js"></script>
+<script src="../JS/mentor-student.js"></script>
+</body>
+</html>
+

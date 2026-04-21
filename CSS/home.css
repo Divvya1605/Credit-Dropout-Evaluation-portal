@@ -1,0 +1,44 @@
+/* STUDENT DASHBOARD */
+.student-page .nav-lnk.active  { background: var(--yellow); color: var(--black); border-color: var(--black); box-shadow: 3px 3px 0 var(--black); }
+.student-page .sb-logo-box { background: var(--yellow); }
+.student-page .u-ava       { background: var(--yellow); }
+
+/* FEATURE CARDS GRID on dashboard home */
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 10px; }
+
+.feat-card {
+  background: var(--white);
+  border: 4px solid var(--black);
+  border-radius: 100px 100px 22px 22px;
+  padding: 36px 24px 30px;
+  text-align: center;
+  box-shadow: 6px 6px 0 var(--black);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--black);
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feat-card:hover { transform: translate(-4px,-5px); box-shadow: 10px 10px 0 var(--black); }
+.feat-card:nth-child(1) { background: var(--pink); }
+.feat-card:nth-child(2) { background: var(--yellow); }
+.feat-card:nth-child(3) { background: var(--teal); }
+
+.fc-icon { width: 72px; height: 72px; background: var(--white); border: 4px solid var(--black); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 34px; margin-bottom: 18px; box-shadow: 3px 3px 0 var(--black); }
+.fc-title { font-family: var(--font-display); font-size: 22px; margin-bottom: 10px; }
+.fc-desc  { font-size: 14px; font-weight: 600; color: #444; line-height: 1.6; margin-bottom: 18px; }
+.fc-cta   { display: inline-flex; align-items: center; gap: 7px; background: var(--black); color: var(--white); border: 3px solid var(--black); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 800; transition: transform 0.15s; }
+.feat-card:hover .fc-cta { transform: translateX(4px); }
+
+.fc-squig { display: block; width: 60px; margin: 0 auto 14px; height: 10px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 10'%3E%3Cpath d='M0,5 Q7.5,0 15,5 Q22.5,10 30,5 Q37.5,0 45,5 Q52.5,10 60,5' fill='none' stroke='%231A1A1A' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; opacity: 0.4; }
+
+/* QUICK STATS on home */
+.quick-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 28px; }
+.qs { background: var(--white); border: 3px solid var(--black); border-radius: 18px; padding: 18px 20px; box-shadow: 4px 4px 0 var(--black); display: flex; align-items: center; gap: 14px; transition: transform 0.15s, box-shadow 0.15s; }
+.qs:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.qs-icon { width: 46px; height: 46px; border: 3px solid var(--black); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.qs:nth-child(1) .qs-icon { background: var(--yellow); }
+.qs:nth-child(2) .qs-icon { background: var(--teal); }
+.qs:nth-child(3) .qs-icon { background: var(--coral); }
+.qs-val { font-family: var(--font-display); font-size: 26px; line-height: 1; }
+.qs-lbl { font-size: 12px; font-weight: 700; color: #777; margin-top: 2px; }

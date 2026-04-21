@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🎓</div>
+    EduPortal
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">SIESGST</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="role-badge badge-s">Student</span>
+    <span class="role-badge badge-m">Mentor</span>
+  </div>
+</nav>
+
+<div class="login-hero">
+
+  <!-- LEFT HERO -->
+  <div class="hero-left">
+    <div class="hero-tag"><span class="dot"></span> SIES Graduate School of Technology</div>
+
+    <h1 class="hero-title">
+      Track Your<br>
+      Academic <span class="hl">Journey</span><br>
+      With Ease!
+    </h1>
+
+    <p class="hero-desc">
+      One unified portal for students to check credits, marks & dropout risk — and mentors to track their entire batch in real time.
+    </p>
+
+    <div class="hero-pills">
+      <span class="pill pill-yellow">🎓 Credit Checker</span>
+      <span class="pill pill-pink">📉 Dropout Meter</span>
+      <span class="pill pill-teal">📊 Marks Details</span>
+      <span class="pill pill-purple">👥 Batch Tracking</span>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM -->
+  <div>
+    <div class="form-card">
+
+      <div class="tabs">
+        <div class="tab-slider" id="tabSlider"></div>
+        <button class="tab-btn on" id="tStudent"><i class='bx bxs-graduation'></i> Student</button>
+        <button class="tab-btn"    id="tMentor"><i class='bx bxs-user-badge'></i> Mentor</button>
+      </div>
+
+      <!-- Student Panel -->
+      <div class="panel on" id="sPanel">
+        <div class="f-title">Welcome back 👋</div>
+        <div class="f-sub">Enter your student email to continue</div>
+        <form id="studentForm">
+          <div class="fld">
+            <label class="flbl">Email Address</label>
+            <div class="iw">
+              <i class='bx bxs-envelope'></i>
+              <input class="finput" type="email" placeholder="you@siesgst.ac.in" required>
+            </div>
+          </div>
+          <button type="submit" class="fsub-btn fsub-student">Continue as Student 🚀</button>
+        </form>
+        <div class="inst-strip"><i class='bx bxs-school'></i> SIES Graduate School of Technology</div>
+      </div>
+
+      <!-- Mentor Panel -->
+      <div class="panel" id="mPanel">
+        <div class="f-title">Hello, Mentor 🎓</div>
+        <div class="f-sub">Enter your mentor email to continue</div>
+        <form id="mentorForm">
+          <div class="fld">
+            <label class="flbl">Email Address</label>
+            <div class="iw">
+              <i class='bx bxs-envelope'></i>
+              <input class="finput" type="email" placeholder="mentor@siesgst.ac.in" required>
+            </div>
+          </div>
+          <button type="submit" class="fsub-btn fsub-mentor">Continue as Mentor 🎯</button>
+        </form>
+        <div class="inst-strip"><i class='bx bxs-school'></i> SIES Graduate School of Technology</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE ARCH CARDS -->
+<div class="feat-strip">
+  <div class="feat-arch">
+    <div class="feat-icon">🎓</div>
+    <div class="feat-title">Credit Checker</div>
+    <div class="feat-desc">Track completed credits and calculate your semester total instantly.</div>
+    <span class="squig"></span>
+  </div>
+  <div class="feat-arch">
+    <div class="feat-icon">📊</div>
+    <div class="feat-title">Marks Details</div>
+    <div class="feat-desc">View subject-wise IA & SEE marks, grades and overall percentage.</div>
+    <span class="squig"></span>
+  </div>
+  <div class="feat-arch">
+    <div class="feat-icon">📉</div>
+    <div class="feat-title">Dropout Meter</div>
+    <div class="feat-desc">Analyse your dropout risk based on attendance and performance.</div>
+    <span class="squig"></span>
+  </div>
+  <div class="feat-arch">
+    <div class="feat-icon">👥</div>
+    <div class="feat-title">Batch Tracking</div>
+    <div class="feat-desc">Mentors monitor batch performance and send alerts to at-risk students.</div>
+    <span class="squig"></span>
+  </div>
+</div>
+
+<div class="mini-footer">© 2025 EduPortal · SIES Graduate School of Technology</div>
+
+<script src="../JS/api.js"></script>
+<script src="../JS/login.js"></script>
+</body>
+</html>

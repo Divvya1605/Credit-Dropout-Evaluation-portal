@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — At-Risk Students</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/mentor-home.css">
+</head>
+<body class="mentor-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🧑‍🏫</div>
+    EduPortal
+  </div>
+  <div class="mentor-strip"><i class='bx bxs-user-badge'></i> Mentor — CSE-C</div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Mentor</span>
+    <a href="mentor-home.html"       class="nav-lnk"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="mentor-batch.html"      class="nav-lnk"><i class='bx bxs-group'></i> Student Batch</a>
+    <a href="mentor-atrisk.html"     class="nav-lnk active"><i class='bx bxs-error-circle'></i> At-Risk Students</a>
+    <a href="mentor-attendance.html" class="nav-lnk"><i class='bx bxs-calendar-check'></i> Attendance</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <a href="mentor-home.html" class="back-btn"><i class='bx bx-arrow-back'></i> Back to Dashboard</a>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-icon" style="background:var(--coral)">⚠️</div>
+      <div class="page-title">At-Risk Students</div>
+    </div>
+    <div class="page-sub">Students flagged by the dropout risk algorithm — review factors and send alerts</div>
+  </div>
+
+  <!-- RISK SUMMARY -->
+  <div class="grid2 anim-up" style="margin-bottom:22px">
+    <div class="ccard" style="background:var(--coral);border-color:var(--black)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="font-size:42px">🔴</div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:36px;line-height:1"><span id="high-count">—</span></div>
+          <div style="font-size:13px;font-weight:800">High Risk — Immediate attention needed</div>
+        </div>
+      </div>
+    </div>
+    <div class="ccard" style="background:var(--yellow);border-color:var(--black)">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="font-size:42px">🟡</div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:36px;line-height:1"><span id="med-count">—</span></div>
+          <div style="font-size:13px;font-weight:800">Medium Risk — Monitor closely</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HIGH RISK -->
+  <div style="font-family:var(--font-display);font-size:20px;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+    <span style="display:inline-block;width:14px;height:14px;background:var(--coral);border:2px solid var(--black);border-radius:50%"></span>
+    High Risk Students
+  </div>
+
+  <div id="highRiskList" class="anim-up"></div>
+
+  <!-- MEDIUM RISK -->
+  <div style="font-family:var(--font-display);font-size:20px;margin:24px 0 12px;display:flex;align-items:center;gap:8px">
+    <span style="display:inline-block;width:14px;height:14px;background:var(--yellow);border:2px solid var(--black);border-radius:50%"></span>
+    Medium Risk Students
+  </div>
+
+  <div id="medRiskList" class="anim-up" style="animation-delay:0.1s"></div>
+
+</main>
+
+<div id="toast"></div>
+<script src="../JS/api.js"></script>
+<script src="../JS/mentor-atrisk.js"></script>
+</body>
+</html>

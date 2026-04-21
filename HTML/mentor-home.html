@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduPortal — Mentor Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../CSS/global.css">
+<link rel="stylesheet" href="../CSS/mentor-home.css">
+</head>
+<body class="mentor-page">
+
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-box">🧑‍🏫</div>
+    EduPortal
+  </div>
+  <div class="mentor-strip"><i class='bx bxs-user-badge'></i> Mentor — CSE-C</div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Mentor</span>
+    <a href="mentor-home.html"       class="nav-lnk active"><i class='bx bxs-dashboard'></i> Dashboard</a>
+    <a href="mentor-batch.html"      class="nav-lnk"><i class='bx bxs-group'></i> Student Batch</a>
+    <a href="mentor-atrisk.html"     class="nav-lnk"><i class='bx bxs-error-circle'></i> At-Risk Students</a>
+    <a href="mentor-attendance.html" class="nav-lnk"><i class='bx bxs-calendar-check'></i> Attendance</a>
+  </div>
+  <div class="nav-sec">
+    <span class="nav-sec-lbl">Account</span>
+    <a href="#" class="nav-lnk" onclick="doLogout()"><i class='bx bx-log-out'></i> Logout</a>
+  </div>
+  <div class="sb-footer">
+    <div class="user-box">
+      <div class="u-ava" id="u-ava">—</div>
+      <div>
+        <div class="u-name" id="u-name">—</div>
+        <div class="u-role" id="u-role">—</div>
+      </div>
+      <button class="u-logout" onclick="doLogout()"><i class='bx bx-log-out'></i></button>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="topbar">
+    <div>
+      <div class="top-title"><span id="greeting">Good morning</span>, <span id="mentor-name">Mentor</span> 👋</div>
+      <div class="top-sub">What would you like to manage today?</div>
+    </div>
+    <div class="top-right">
+      <div class="chip"><i class='bx bxs-group'></i> CSE-C · 62 Students</div>
+      <div class="notif-btn"><i class='bx bx-bell'></i><span class="notif-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="m-quick-stats anim-up">
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--teal)">👥</div>
+      <div><div class="mqs-val" id="mqs-total">—</div><div class="mqs-lbl">Total Students</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--purple)">📊</div>
+      <div><div class="mqs-val" id="mqs-sgpi">—</div><div class="mqs-lbl">Avg SGPI</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--coral)">⚠️</div>
+      <div><div class="mqs-val" id="mqs-risk">—</div><div class="mqs-lbl">At-Risk Students</div></div>
+    </div>
+    <div class="mqs">
+      <div class="mqs-icon" style="background:var(--yellow)">📅</div>
+      <div><div class="mqs-val">82%</div><div class="mqs-lbl">Avg Attendance</div></div>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <div style="margin-bottom:14px">
+    <div style="font-family:var(--font-display);font-size:20px;margin-bottom:4px">Your Tools</div>
+    <div style="font-size:13px;font-weight:600;color:#777">Click a card to manage your batch</div>
+  </div>
+
+  <div class="m-feature-grid anim-up" style="animation-delay:0.1s">
+
+    <a href="mentor-batch.html" class="mfeat-card" style="background:var(--teal)">
+      <div class="mfc-icon">👥</div>
+      <span class="mfc-squig"></span>
+      <div class="mfc-title">Student Batch</div>
+      <div class="mfc-desc">View the full CSE-C batch list. Search, filter by risk level, and see each student's attendance, marks and CGPA at a glance.</div>
+      <div class="mfc-cta">Open <i class='bx bx-right-arrow-alt'></i></div>
+    </a>
+
+    <a href="mentor-atrisk.html" class="mfeat-card" style="background:var(--coral)">
+      <div class="mfc-icon">⚠️</div>
+      <span class="mfc-squig"></span>
+      <div class="mfc-title">At-Risk Students</div>
+      <div class="mfc-desc">See all flagged students, their risk scores and contributing factors. Send alerts directly to students or their guardians.</div>
+      <div class="mfc-cta">Open <i class='bx bx-right-arrow-alt'></i></div>
+    </a>
+
+    <a href="mentor-attendance.html" class="mfeat-card" style="background:var(--yellow)">
+      <div class="mfc-icon">📅</div>
+      <span class="mfc-squig"></span>
+      <div class="mfc-title">Attendance</div>
+      <div class="mfc-desc">Track subject-wise attendance across the batch. Spot students falling below 75% before it becomes a critical issue.</div>
+      <div class="mfc-cta">Open <i class='bx bx-right-arrow-alt'></i></div>
+    </a>
+
+  </div>
+
+</main>
+
+<script src="../JS/api.js"></script>
+<script src="../JS/mentor-home.js"></script>
+</body>
+</html>
